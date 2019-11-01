@@ -24,6 +24,7 @@ import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
+import javax.swing.JComboBox;
 
 public class MainWindowBD {
 	private AutoBinding<ReferenceItem, String, JTextField, String> BndStringTest;
@@ -36,6 +37,8 @@ public class MainWindowBD {
 	protected JMenuBar menuBar;
 	protected JMenu mnuFile;
 	protected JMenuItem mnuFileQuit;
+	protected JLabel lblComboTest;
+	protected JComboBox cboTest;
 
 
 	/**
@@ -61,7 +64,7 @@ public class MainWindowBD {
 		
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[right][grow,fill]", "[fill][fill]"));
+		panel.setLayout(new MigLayout("", "[right][grow,fill]", "[fill][100px:n][fill]"));
 		
 		JLabel lblStringTest = new JLabel("String Test:");
 		lblStringTest.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -70,6 +73,12 @@ public class MainWindowBD {
 		txtStringTest = new JTextField();
 		panel.add(txtStringTest, "cell 1 0,grow");
 		txtStringTest.setColumns(20);
+		
+		lblComboTest = new JLabel("Combo Test");
+		panel.add(lblComboTest, "cell 0 1,alignx trailing,aligny bottom");
+		
+		cboTest = new JComboBox();
+		panel.add(cboTest, "cell 1 1,growx");
 		
 		menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
