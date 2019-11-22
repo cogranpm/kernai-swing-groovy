@@ -7,6 +7,7 @@ import java.awt.event.WindowEvent
 import javax.swing.DefaultComboBoxModel
 import javax.swing.DefaultListCellRenderer
 import javax.swing.JList
+import javax.swing.plaf.basic.BasicComboBoxRenderer
 
 import com.parinherm.model.ComboBoxItem
 import groovy.transform.CompileStatic
@@ -19,23 +20,29 @@ class MainWindowBDGroove extends MainWindowBD {
 		super()
 		referenceItem.setStringTest("Hi a watha")
 		cboTest.setModel(new DefaultComboBoxModel(referenceItem.comboList as ComboBoxItem[]))
-		cboTest.setRenderer(new ComboListLabelProvider())
+		//cboTest.setRenderer(new ComboListLabelProvider())
 		
 		/*
-		cboTest.setRenderer(new DefaultListCellRenderer() {
+		cboTest.setRenderer(new BasicComboBoxRenderer() {
 			@Override
 			public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
 					boolean cellHasFocus) {
 				// TODO Auto-generated method stub
 				setText((value as ComboBoxItem).description)
+				setIcon(null)
 				return this
 			}
 				
-			})
+		})
 		*/
 		
 		
-		btnSave.addActionListener({ println referenceItem.getStringTest()})
+		
+		
+		btnSave.addActionListener({ 
+			println referenceItem.getStringTest()
+			println referenceItem.getComboTest()
+			})
 		mnuFileQuit.addActionListener({ 
 			frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING))
 		})

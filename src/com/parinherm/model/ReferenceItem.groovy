@@ -11,6 +11,7 @@ class ReferenceItem {
 	}
 	
 	@Bindable String stringTest
+	@Bindable String comboTest
 	
 	def item1 = new ComboBoxItem(code: "x", description: "xylophone")
 	def item2 = new ComboBoxItem(code: "y", description: "Yellow")

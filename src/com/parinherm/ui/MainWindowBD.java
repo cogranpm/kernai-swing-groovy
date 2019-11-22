@@ -25,6 +25,7 @@ import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
 import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class MainWindowBD {
 	private AutoBinding<ReferenceItem, String, JTextField, String> BndStringTest;
@@ -39,6 +40,7 @@ public class MainWindowBD {
 	protected JMenuItem mnuFileQuit;
 	protected JLabel lblComboTest;
 	protected JComboBox cboTest;
+	protected JComboBox comboBox;
 
 
 	/**
@@ -80,6 +82,10 @@ public class MainWindowBD {
 		cboTest = new JComboBox();
 		panel.add(cboTest, "cell 1 1,growx");
 		
+		comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"test", "now", "then"}));
+		panel.add(comboBox, "cell 1 2,growx");
+		
 		menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
 		
@@ -92,11 +98,16 @@ public class MainWindowBD {
 		mnuFile.add(mnuFileQuit);
 		initDataBindings();
 	}
-
 	protected void initDataBindings() {
 		BeanProperty<ReferenceItem, String> referenceItemBeanProperty = BeanProperty.create("stringTest");
 		BeanProperty<JTextField, String> jTextFieldBeanProperty = BeanProperty.create("text");
 		BndStringTest = Bindings.createAutoBinding(UpdateStrategy.READ_WRITE, referenceItem, referenceItemBeanProperty, txtStringTest, jTextFieldBeanProperty, "StringTest");
 		BndStringTest.bind();
+		//
+		BeanProperty<ReferenceItem, String> referenceItemBeanProperty_1 = BeanProperty.create("comboTest");
+		BeanProperty<JComboBox, Object> jComboBoxBeanProperty = BeanProperty.create("selectedItem");
+		AutoBinding<ReferenceItem, String, JComboBox, Object> autoBinding = Bindings.createAutoBinding(UpdateStrategy.READ_WRITE, referenceItem, referenceItemBeanProperty_1, cboTest, jComboBoxBeanProperty, "bndCboTest");
+		autoBinding.setConverter(new ComboTestConverter());
+		autoBinding.bind();
 	}
 }

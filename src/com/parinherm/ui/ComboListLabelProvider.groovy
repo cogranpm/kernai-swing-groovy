@@ -1,60 +1,59 @@
 package com.parinherm.ui
 
 import com.parinherm.model.ComboBoxItem
-
+import java.awt.Color
 import java.awt.Component
-
+import java.awt.Font
 import javax.swing.Icon
+import javax.swing.JComponent
 import javax.swing.JLabel
 import javax.swing.JList
 import javax.swing.ListCellRenderer
+import javax.swing.plaf.basic.BasicComboBoxRenderer
 
-class ComboListLabelProvider extends JLabel implements ListCellRenderer<ComboBoxItem> {
+class ComboListLabelProvider  extends JLabel implements ListCellRenderer{
 
 	public ComboListLabelProvider() {
 		super()
-		setOpaque(true)
-		setHorizontalAlignment(CENTER)
-		setVerticalAlignment(CENTER)
+		setOpaque(false)
+		
 	}
-
-	public ComboListLabelProvider(String text) {
-		super(text)
-		// TODO Auto-generated constructor stub
-	}
-
-	public ComboListLabelProvider(Icon image) {
-		super(image)
-		// TODO Auto-generated constructor stub
-	}
-
-	public ComboListLabelProvider(String text, int horizontalAlignment) {
-		super(text, horizontalAlignment)
-		// TODO Auto-generated constructor stub
-	}
-
-	public ComboListLabelProvider(Icon image, int horizontalAlignment) {
-		super(image, horizontalAlignment)
-		// TODO Auto-generated constructor stub
-	}
-
-	public ComboListLabelProvider(String text, Icon icon, int horizontalAlignment) {
-		super(text, icon, horizontalAlignment)
-		// TODO Auto-generated constructor stub
-	}
-
+	
 	@Override
-	public Component getListCellRendererComponent(JList<? extends ComboBoxItem> list, ComboBoxItem value, int index,
-			boolean isSelected, boolean cellHasFocus) {
+	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
+			boolean cellHasFocus) {
+		//return super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+			
+			
+			setText((value as ComboBoxItem).description);
 			
 			if (isSelected) {
 				setBackground(list.getSelectionBackground());
 				setForeground(list.getSelectionForeground());
 			} else {
-				setBackground(list.getBackground());
-				setForeground(list.getForeground());
+				setBackground(Color.WHITE)
+				list.setForeground(list.getForeground());
 			}
+
+		
+//			if(isSelected) setBackground(list.getSelectionForeground());
+//			else setBackground(new Color(153, 204, 255));
+
+
+			return this;
+	}
+/*	public Component getListCellRendererComponent(JList<? extends ComboBoxItem> list, ComboBoxItem value, int index,
+			boolean isSelected, boolean cellHasFocus) {
+			
+		if (isSelected) {
+			setBackground(list.getSelectionBackground());
+			setForeground(list.getSelectionForeground());
+		} else {
+			setBackground(list.getBackground());
+			setForeground(list.getForeground());
+		}
 		setText(value.description)
 		return this;
 	}
+	*/
 }
