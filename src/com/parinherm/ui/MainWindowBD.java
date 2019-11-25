@@ -1,3 +1,10 @@
+/* this class was created with windowbuilder in eclipse
+windowbuilder tool will only work with java source files, so strategy is to inherit from java class in groovy class
+and write no code in java ui source file, and do it all in groovy
+testing out a development process of using a gui builder for layout and databinding
+and a base class in groovy to customize in groovy code
+ */
+
 package com.parinherm.ui;
 
 

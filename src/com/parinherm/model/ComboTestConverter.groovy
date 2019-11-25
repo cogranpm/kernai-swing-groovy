@@ -4,6 +4,7 @@ import org.jdesktop.beansbinding.Converter
 
 class ComboTestConverter extends Converter {
 
+	//this isn't used yet
 	@Override
 	public Object convertForward(Object arg0) {
 		return "Hi there"
