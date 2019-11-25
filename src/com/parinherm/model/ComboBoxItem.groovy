@@ -1,6 +1,6 @@
 package com.parinherm.model
 import groovy.transform.Canonical
-import groovy.transform.ToString
+
 
 @Canonical
 class ComboBoxItem {
@@ -8,7 +8,7 @@ class ComboBoxItem {
 	String description
 	
 	
-	
+	//this is the easy way to have a combobox bound to this class
 	String toString() {
 		return description
 	}
